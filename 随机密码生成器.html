@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机密码生成器</title>
+    <script>
+        function gen(pasArr, pasLen) {
+            let pasArrLen = pasArr.length;
+            let password = '';
+            for (let i = 0; i < pasLen; i++) {
+                let x = Math.floor(Math.random() * pasArrLen);
+                password += pasArr[x];
+            }
+            return password;
+        }
+
+        function ss_jc_jc() {
+            let charString = '';
+            let types = document.getElementsByName("ss_checkbox");
+            for (let i = 0; i < types.length; i++) {
+                let ele = types[i];
+                if (ele.checked) {
+                    charString += ele.value;
+                }
+            }
+            let pasArr = charString.split('');
+            let pasLen = document.getElementById("ss_cd").value;
+			for (let i = 1; i <= 9; i++) {
+				document.getElementById('ss_jieguo' + i).innerHTML = gen(pasArr, pasLen);
+			}
+        }
+    </script>
+</head>
+<body style="font-size: 24px">
+<table width="95%" style="max-width:650px;" border="0" cellpadding="0" cellspacing="0" bgcolor="#C5D5C5" align="center">
+    <tr>
+        <td>
+            <table width="100%" border="0" cellpadding="8" cellspacing="1">
+                <tr>
+                    <td width="25%" bgcolor="#F5F5F5" align="center">所用字符</td>
+                    <td width="75%" bgcolor="#FFFFFF" class="shuru_div">
+                        <span style="display:inline-block">
+                            <input id="ss_sz" name="ss_checkbox" type="checkbox" checked="checked" value="0123456789"/>
+                            <label for="ss_sz" class="shuru_div_jiange">0-9</label>
+                        </span>
+                        <span style="display:inline-block">
+                            <input id="ss_xx" name="ss_checkbox" type="checkbox" checked="checked"
+                                   value="abcdefghijklmnopqrstuvwxyz"/>
+                            <label for="ss_xx" class="shuru_div_jiange">a-z</label>
+                        </span>
+                        <span style="display:inline-block">
+                            <input id="ss_dx" name="ss_checkbox" type="checkbox" checked="checked"
+                                   value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+                            <label for="ss_dx" class="shuru_div_jiange">A-Z</label>
+                        </span>
+                        <span style="display:inline-block">
+                            <input id="ss_fh_value" value="!@#$%^&*._~?-+" type="text" size="2" disabled="disabled"/>
+                            <label for="ss_fh_value"><input id="ss_fh" name="ss_checkbox" type="checkbox"
+                                                            value="!@#$%^&*._~?-+"/></label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">密码长度</td>
+                    <td bgcolor="#FFFFFF" class="shuru_div">
+                        <span style="display:inline-block">
+                            <select id="ss_cd" name="ss_cd" class="all_srk_1"></select>
+                            <label for="ss_cd" class="shuru_div_jiange">位</label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果1</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo1" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果2</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo2" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果3</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo3" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果4</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo4" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果5</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo5" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果6</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo6" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果7</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo7" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果8</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo8" class="shuru_div"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#F5F5F5" align="center">生成结果9</td>
+                    <td bgcolor="#FFFFFF" id="ss_jieguo9" class="shuru_div"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<div align="center">
+    <br/><input id="ss_anniu" class="all_an_1" type="button" onclick="ss_jc_jc();" value="生成密码"/>
+</div>
+</body>
+<script>
+    function select_sheng_cheng(eName) {
+        let e = document.getElementById(eName);
+        for (let i = 1; i <= 99; i++) {
+            let option = new Option(String(i), String(i));
+            if (i == 14) {
+                option.selected = true;
+            }
+            e.options.add(option);
+        }
+    }
+
+    select_sheng_cheng("ss_cd");
+	ss_jc_jc();
+</script>
+</html>
