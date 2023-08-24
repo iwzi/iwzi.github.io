@@ -11,6 +11,7 @@
                 let x = Math.floor(Math.random() * pasArrLen);
                 password += pasArr[x];
             }
+            let pasLen = document.getElementById("ss_cd").value;
             return password;
         }
 
@@ -18,13 +19,10 @@
             let charString = '';
             let types = document.getElementsByName("ss_checkbox");
             for (let i = 0; i < types.length; i++) {
-                let ele = types[i];
-                if (ele.checked) {
-                    charString += ele.value;
+                         charString += ele.value;
                 }
             }
             let pasArr = charString.split('');
-            let pasLen = document.getElementById("ss_cd").value;
 			for (let i = 1; i <= 9; i++) {
 				document.getElementById('ss_jieguo' + i).innerHTML = gen(pasArr, pasLen);
 			}
@@ -46,7 +44,6 @@
                         <span style="display:inline-block">
                             <input id="ss_xx" name="ss_checkbox" type="checkbox" checked="checked"
                                    value="abcdefghijklmnopqrstuvwxyz"/>
-                            <label for="ss_xx" class="shuru_div_jiange">a-z</label>
                         </span>
                         <span style="display:inline-block">
                             <input id="ss_dx" name="ss_checkbox" type="checkbox" checked="checked"
@@ -91,7 +88,6 @@
                 </tr>
                 <tr>
                     <td bgcolor="#F5F5F5" align="center">生成结果6</td>
-                    <td bgcolor="#FFFFFF" id="ss_jieguo6" class="shuru_div"></td>
                 </tr>
                 <tr>
                     <td bgcolor="#F5F5F5" align="center">生成结果7</td>
@@ -115,10 +111,8 @@
 </body>
 <script>
     function select_sheng_cheng(eName) {
-        let e = document.getElementById(eName);
         for (let i = 1; i <= 99; i++) {
             let option = new Option(String(i), String(i));
-            if (i == 14) {
                 option.selected = true;
             }
             e.options.add(option);

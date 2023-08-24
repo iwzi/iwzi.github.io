@@ -27,10 +27,8 @@
         let year = mydate.getFullYear();
         let month = (mydate.getMonth() < 9 ? "0" : "") + (mydate.getMonth() + 1)
         let date = (mydate.getDate() < 10 ? "0" : "") + mydate.getDate();
-        let hours = (mydate.getHours() < 10 ? "0" : "") + mydate.getHours();
         let minutes = (mydate.getMinutes() < 10 ? "0" : "") + mydate.getMinutes();
         let seconds = (mydate.getSeconds() < 10 ? "0" : "") + mydate.getSeconds();
-        document.getElementById("demo1").innerHTML = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
         document.getElementById("demo2").innerHTML = (++i) + (i >= 60 ? '（' + Math.floor(i / 60) + '分' + i % 60 + '秒）' : '');
     }
 </script>
